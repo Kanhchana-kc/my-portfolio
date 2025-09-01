@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import PortfolioNavbar from "./components/PortfolioNavbar";
+import Home from "./components/Home";
+import About from "./components/About";
+import Projects from "./components/Projects";
+import Contact from "./components/Contact";
 
 function App() {
+  const [darkMode, setDarkMode] = useState(true);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={darkMode ? "bg-dark text-light" : "bg-light text-dark"}>
+      <PortfolioNavbar darkMode={darkMode} setDarkMode={setDarkMode} />
+
+      <Routes>
+        <Route path="/" element={<Home darkMode={darkMode} />} />
+        <Route path="/about" element={<About darkMode={darkMode} />} />
+        <Route path="/projects" element={<Projects darkMode={darkMode} />} />
+        <Route path="/contact" element={<Contact darkMode={darkMode} />} />
+      </Routes>
     </div>
   );
 }
