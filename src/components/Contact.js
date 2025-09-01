@@ -1,28 +1,178 @@
-import React from "react";
+// Contact.jsx
+import React from 'react';
+import { Container, Row, Col, Form, Button, Image } from 'react-bootstrap';
+import { motion } from 'framer-motion';
+import {
+  FaYoutube,
+  FaEnvelope,
+  FaPhone,
+  FaLinkedin,
+  FaFacebook,
+  FaGithub,
+} from 'react-icons/fa';
 
-export default function Contact() {
+export default function Contact({ darkMode }) {
+  const bgColor = darkMode ? '#121212' : '#f8f9fa';
+  const textColor = darkMode ? '#f8f9fa' : '#121212';
+  const inputBg = darkMode ? '#1c1c1e' : '#ffffff';
+  const inputBorder = darkMode ? '#444' : '#ced4da';
+
   return (
-    <section id="contact" className="px-8 py-20 bg-slate-900 text-white">
-      <h2 className="text-3xl font-bold mb-6">Contact Us</h2>
-      <form className="max-w-lg space-y-4">
-        <input
-          type="text"
-          placeholder="Your Name"
-          className="w-full px-4 py-3 rounded-lg bg-slate-800 text-white border border-gray-700"
-        />
-        <input
-          type="email"
-          placeholder="Your Email"
-          className="w-full px-4 py-3 rounded-lg bg-slate-800 text-white border border-gray-700"
-        />
-        <textarea
-          placeholder="Your Message"
-          className="w-full px-4 py-3 rounded-lg bg-slate-800 text-white border border-gray-700"
-        ></textarea>
-        <button className="w-full bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-xl">
-          Send Message
-        </button>
-      </form>
+    <section
+      id="contact"
+      style={{
+        backgroundColor: bgColor,
+        color: textColor,
+        minHeight: '100vh',
+        padding: '5rem 0',
+        transition: 'all 0.4s',
+      }}
+    >
+      <Container>
+        {/* Title */}
+        <motion.h2
+          className="text-center mb-5 fw-bold"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          CONTACT ME
+        </motion.h2>
+
+        <Row className="align-items-center justify-content-center">
+          {/* Left Column - Form + Social */}
+          <Col lg={6} md={8} sm={12}>
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              {/* Contact Form */}
+              <Form
+                className="p-5 rounded-4 shadow-lg text-center"
+                style={{
+                  backgroundColor: darkMode ? '#1c1c1e' : '#ffffff',
+                }}
+              >
+                <Form.Group className="mb-3">
+                  <Form.Control
+                    type="text"
+                    placeholder="Your Name"
+                    style={{
+                      backgroundColor: inputBg,
+                      color: textColor,
+                      border: `1px solid ${inputBorder}`,
+                      borderRadius: '0.5rem',
+                    }}
+                  />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Control
+                    type="email"
+                    placeholder="Your Email"
+                    style={{
+                      backgroundColor: inputBg,
+                      color: textColor,
+                      border: `1px solid ${inputBorder}`,
+                      borderRadius: '0.5rem',
+                    }}
+                  />
+                </Form.Group>
+                <Form.Group className="mb-4">
+                  <Form.Control
+                    as="textarea"
+                    rows={5}
+                    placeholder="Your Message"
+                    style={{
+                      backgroundColor: inputBg,
+                      color: textColor,
+                      border: `1px solid ${inputBorder}`,
+                      borderRadius: '0.5rem',
+                    }}
+                  />
+                </Form.Group>
+                <Button
+                  type="submit"
+                  className="w-100 py-2 fw-bold"
+                  style={{ backgroundColor: '#0d6efd', border: 'none' }}
+                >
+                  Send Message
+                </Button>
+              </Form>
+
+              {/* Social Buttons */}
+              <div className="text-center mt-5">
+                <h5 className="fw-bold mb-3">I AM SOCIAL</h5>
+                <div className="d-flex justify-content-center flex-wrap gap-3">
+                  <Button
+                    href="mailto:youremail@example.com"
+                    target="_blank"
+                    variant="outline-primary"
+                    className="d-flex align-items-center gap-2 px-4 py-2 rounded-3"
+                  >
+                    <FaEnvelope /> Email
+                  </Button>
+                  <Button
+                    href="https://www.youtube.com/channel/UCqjIblaIUjhlc1QH2kRroxg"
+                    target="_blank"
+                    variant="outline-danger"
+                    className="d-flex align-items-center gap-2 px-4 py-2 rounded-3"
+                  >
+                    <FaYoutube /> YouTube
+                  </Button>
+                  <Button
+                    href="tel:+855712727148"
+                    variant="outline-success"
+                    className="d-flex align-items-center gap-2 px-4 py-2 rounded-3"
+                  >
+                    <FaPhone /> Call
+                  </Button>
+                  <Button
+                    href="https://www.linkedin.com/"
+                    target="_blank"
+                    variant="info"
+                    className="d-flex align-items-center gap-2 px-4 py-2 rounded-3"
+                  >
+                    <FaLinkedin /> LinkedIn
+                  </Button>
+                  <Button
+                    href="https://facebook.com"
+                    target="_blank"
+                    variant="outline-primary"
+                    className="d-flex align-items-center gap-2 px-4 py-2 rounded-3"
+                  >
+                    <FaFacebook /> Facebook
+                  </Button>
+                  <Button
+                    href="https://github.com/YOUR_GITHUB_USERNAME"
+                    target="_blank"
+                    variant="outline-dark"
+                    className="d-flex align-items-center gap-2 px-4 py-2 rounded-3"
+                  >
+                    <FaGithub /> GitHub
+                  </Button>
+                </div>
+              </div>
+            </motion.div>
+          </Col>
+
+          {/* Right Column - Animated Image */}
+          <Col lg={5} md={8} sm={12} className="mt-5 mt-lg-0 text-center">
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1 }}
+            >
+              <Image
+                src="https://i.pinimg.com/736x/f9/dd/97/f9dd970dfa68f47f33e61381c072f168.jpg" // 👈 replace with your image path
+                alt="Contact Illustration"
+                fluid
+                className="rounded-4 shadow-lg"
+              />
+            </motion.div>
+          </Col>
+        </Row>
+      </Container>
     </section>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import PortfolioNavbar from "./components/PortfolioNavbar";
+import PortfolioNavbar from "./components/PortfolioNavbar.js";
 import Home from "./components/Home";
 import About from "./components/About";
 import Projects from "./components/Projects";
