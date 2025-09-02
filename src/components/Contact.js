@@ -1,5 +1,5 @@
 // Contact.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button, Image } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import {
@@ -10,8 +10,11 @@ import {
   FaFacebook,
   FaGithub,
 } from 'react-icons/fa';
+import imageHover from '../assets/pic2.gif'; // 🔹 hover image
 
 export default function Contact({ darkMode }) {
+  const [hovered, setHovered] = useState(false);
+
   const bgColor = darkMode ? '#121212' : '#f8f9fa';
   const textColor = darkMode ? '#f8f9fa' : '#121212';
   const inputBg = darkMode ? '#1c1c1e' : '#ffffff';
@@ -50,9 +53,7 @@ export default function Contact({ darkMode }) {
               {/* Contact Form */}
               <Form
                 className="p-5 rounded-4 shadow-lg text-center"
-                style={{
-                  backgroundColor: darkMode ? '#1c1c1e' : '#ffffff',
-                }}
+                style={{ backgroundColor: darkMode ? '#1c1c1e' : '#ffffff' }}
               >
                 <Form.Group className="mb-3">
                   <Form.Control
@@ -156,19 +157,31 @@ export default function Contact({ darkMode }) {
             </motion.div>
           </Col>
 
-          {/* Right Column - Animated Image */}
-          <Col lg={5} md={8} sm={12} className="mt-5 mt-lg-0 text-center">
+          {/* Right Column - Hover Image with Fade */}
+          <Col lg={6} md={8} sm={12} className="text-center">
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1 }}
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              transition={{ type: 'spring', stiffness: 300 }}
+              onMouseEnter={() => setHovered(true)}
+              onMouseLeave={() => setHovered(false)}
             >
-              <Image
-                src="https://i.pinimg.com/736x/f9/dd/97/f9dd970dfa68f47f33e61381c072f168.jpg" // 👈 replace with your image path
-                alt="Contact Illustration"
-                fluid
-                className="rounded-4 shadow-lg"
-              />
+              <motion.div
+                key={hovered ? 'hover' : 'original'}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.4 }}
+              >
+                <Image
+                  src={
+                    hovered
+                      ? imageHover // hover image
+                      : 'https://i.pinimg.com/originals/f0/f0/d9/f0f0d932d6e39c7af5aa305cbd8da735.gif' // original image
+                  }
+                  alt="Contact Illustration"
+                  fluid
+                  className="rounded-4 shadow-lg"
+                />
+              </motion.div>
             </motion.div>
           </Col>
         </Row>
