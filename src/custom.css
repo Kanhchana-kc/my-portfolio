@@ -1,0 +1,26 @@
+:root {
+  --bs-primary: #3E5F44; /* Replace Bootstrap primary color */
+}
+
+.btn-primary {
+  background-color: #3E5F44 !important;
+  border-color: #3E5F44 !important;
+}
+
+.btn-outline-primary {
+  color: #3E5F44 !important;
+  border-color: #3E5F44 !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: #3E5F44 !important;
+  color: white !important;
+}
+
+.progress-bar {
+  background-color: #3E5F44 !important;
+}
+
+.text-primary {
+  color: #3E5F44 !important;
+}
