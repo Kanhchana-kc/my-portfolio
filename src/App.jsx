@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import PortfolioNavbar from "./components/PortfolioNavbar.js";
-import Home from "./components/Home";
-import About from "./components/About";
-import Projects from "./components/Projects";
-import Contact from "./components/Contact";
+import PortfolioNavbar from "./components/PortfolioNavbar.jsx";
+import Home from "./components/Home.jsx";
+import About from "./components/About.jsx";
+import Projects from "./components/Projects.jsx";
+import Contact from "./components/Contact.jsx";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
