@@ -1,87 +1,110 @@
 // pages/Home.jsx
-import React from "react";
-import { Col, Row, Card, Container, Image, ProgressBar } from "react-bootstrap";
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import heroPic from "../assets/pic.jpg";
+import React, { useState, useEffect } from 'react';
+import { Col, Row, Card, Container, Image, ProgressBar } from 'react-bootstrap';
+import { motion } from 'framer-motion';
+import heroPic from '../assets/pic.jpg';
 
 // Logos
-import htmlLogo from "../assets/html.png";
-import aiLogo from "../assets/ai.png";
-import officeLogo from "../assets/office.png";
-import figmaLogo from "../assets/figma.png";
-import canvaLogo from "../assets/canva.png";
-import bootstrapLogo from "../assets/b.png";
-import prLogo from "../assets/PR.png";
-import laravelLogo from "../assets/l.jpg";
-import reactLogo from "../assets/r.png";
-import phpLogo from "../assets/php.png";
-import ph from "../assets/PHOTOSHOPE.png";
-import p1 from "../assets/p1.png";
+import htmlLogo from '../assets/html.png';
+import aiLogo from '../assets/ai.png';
+import officeLogo from '../assets/office.png';
+import figmaLogo from '../assets/figma.png';
+import canvaLogo from '../assets/canva.png';
+import bootstrapLogo from '../assets/b.png';
+import prLogo from '../assets/PR.png';
+import laravelLogo from '../assets/l.jpg';
+import reactLogo from '../assets/r.png';
+import phpLogo from '../assets/php.png';
+import ph from '../assets/PHOTOSHOPE.png';
+import p1 from '../assets/p1.png';
+import cvFile from '../assets/cv.pdf';
 
 const logos = [
-  htmlLogo, aiLogo, officeLogo, figmaLogo, canvaLogo,
-  bootstrapLogo, prLogo, laravelLogo, reactLogo, phpLogo, ph,
+  htmlLogo,
+  aiLogo,
+  officeLogo,
+  figmaLogo,
+  canvaLogo,
+  bootstrapLogo,
+  prLogo,
+  laravelLogo,
+  reactLogo,
+  phpLogo,
+  ph,
 ];
 
 const skills = [
-  { name: "React.js", level: 90, logo: reactLogo },
-  { name: "JavaScript", level: 85, logo: htmlLogo },
-  { name: "Laravel", level: 70, logo: laravelLogo },
-  { name: "Bootstrap/CSS", level: 80, logo: bootstrapLogo },
-  { name: "Photoshop", level: 75, logo: ph },
-  { name: "Illustrator", level: 65, logo: aiLogo },
-  { name: "Figma", level: 80, logo: figmaLogo },
-  { name: "Premiere Pro", level: 85, logo: prLogo },
+  { name: 'React.js', level: 60, logo: reactLogo },
+  { name: 'JavaScript', level: 60, logo: htmlLogo },
+  { name: 'Laravel', level: 70, logo: laravelLogo },
+  { name: 'Bootstrap/CSS', level: 70, logo: bootstrapLogo },
+  { name: 'Photoshop', level: 75, logo: ph },
+  { name: 'Illustrator', level: 65, logo: aiLogo },
+  { name: 'Figma', level: 60, logo: figmaLogo },
+  { name: 'Premiere Pro', level: 85, logo: prLogo },
 ];
 
 const softSkills = [
-  { name: "Teamwork", level: 85 },
-  { name: "Problem Solving", level: 90 },
-  { name: "Adaptability", level: 80 },
-  { name: "Communication", level: 85 },
+  { name: 'Teamwork', level: 85 },
+  { name: 'Problem Solving', level: 90 },
+  { name: 'Adaptability', level: 80 },
+  { name: 'Communication', level: 85 },
 ];
 
 const profileSize = 300;
 const orbitRadius = 200;
 
+const quotes = [
+  'Small steps are better than doing nothing at all.',
+  'Do something today, no matter how small.',
+  'Progress is made by taking action, not waiting.',
+];
+const quoteColors = ['#0d6efd', '#6610f2', '#20c997'];
+
 export default function Home({ darkMode }) {
+  const [quoteIndex, setQuoteIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setQuoteIndex((prev) => (prev + 1) % quotes.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
   const projects = [
     {
       id: 1,
-      title: "HTML CSS and JS",
-      description: "Khmer temple website project.",
-      link: "https://khmer-temple.vercel.app/index.html",
+      title: 'HTML CSS and JS',
+      description: 'Khmer temple website project.',
+      link: 'https://khmer-temple.vercel.app/index.html',
       image: p1,
     },
     {
       id: 2,
-      title: "E-commerce App",
-      description: "Online store built with React & Firebase.",
-      link: "#",
-      image: "/assets/projects/ecommerce.png",
+      title: 'E-commerce App',
+      description: 'Online store built with React & Firebase.',
+      link: '#',
+      image: '/assets/projects/ecommerce.png',
     },
     {
       id: 3,
-      title: "Blog Platform",
-      description: "Modern blog platform with Markdown support.",
-      link: "#",
-      image: "/assets/projects/blog.png",
+      title: 'Blog Platform',
+      description: 'Modern blog platform with Markdown support.',
+      link: '#',
+      image: '/assets/projects/blog.png',
     },
   ];
 
-  const textClass = darkMode ? "text-light" : "text-dark";
-
-  // Dynamic color for Hero spans
-  const heroColor1 = darkMode ? "#4dabf7" : "#0d6efd"; // light blue for dark mode
-  const heroColor2 = darkMode ? "#b197fc" : "#6610f2"; // light purple for dark mode
+  const textClass = darkMode ? 'text-light' : 'text-dark';
+  const heroColor1 = darkMode ? '#4dabf7' : '#0d6efd';
+  const heroColor2 = darkMode ? '#b197fc' : '#6610f2';
 
   return (
     <>
       {/* Hero Section */}
       <section
         className={`d-flex flex-column flex-lg-row justify-content-center align-items-center py-5 ${textClass}`}
-        style={{ minHeight: "100vh", textAlign: "center" }}
+        style={{ minHeight: '100vh', textAlign: 'center' }}
       >
         {/* Text */}
         <Col lg={6} className="mb-4 mb-lg-0">
@@ -91,7 +114,7 @@ export default function Home({ darkMode }) {
             transition={{ duration: 1 }}
           >
             <h1 className={`display-4 fw-bold ${textClass}`}>
-              Hi, I'm{" "}
+              Hi, I'm{' '}
               <motion.span
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -99,7 +122,7 @@ export default function Home({ darkMode }) {
                 style={{ color: heroColor1 }}
               >
                 KANHCHANA
-              </motion.span>{" "}
+              </motion.span>{' '}
               <motion.span
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -110,44 +133,53 @@ export default function Home({ darkMode }) {
               </motion.span>
             </h1>
 
+            {/* Rotating Quote */}
             <motion.p
+              key={quoteIndex}
               className={`lead ${textClass}`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1.5, delay: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 1 }}
+              style={{ color: quoteColors[quoteIndex % quoteColors.length] }}
             >
-              I build awesome web applications with React.js
+              {quotes[quoteIndex]}
             </motion.p>
 
-            <div className="d-flex flex-wrap gap-2 justify-content-center justify-content-lg-start mt-3">
-              <Link to="/projects" className="btn btn-primary">
-                View My Projects
-              </Link>
-              <a href="/resume.pdf" download className="btn btn-outline-primary">
-                📄 Download CV
+            <div className="d-flex justify-content-center gap-3 mt-4">
+              <a
+                href={cvFile}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-outline-primary"
+              >
+                📄 View CV
               </a>
             </div>
           </motion.div>
         </Col>
 
-        {/* Profile + Orbit Logos */}
-        <Col lg={6} className="position-relative">
+        {/* Profile + Logos */}
+        <Col
+          lg={6}
+          className="position-relative d-flex flex-column align-items-center"
+        >
+          {/* Profile */}
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1 }}
             style={{
-              position: "relative",
               width: `${profileSize}px`,
               height: `${profileSize}px`,
-              borderRadius: "50%",
-              padding: "15px",
-              background: "linear-gradient(135deg, #0d6efd, #00c6ff, #6610f2)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              boxShadow: "0 0 50px rgba(13, 110, 253, 0.8)",
-              margin: "0 auto",
+              borderRadius: '50%',
+              padding: '15px',
+              background: 'linear-gradient(135deg, #0d6efd, #00c6ff, #6610f2)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 0 50px rgba(13, 110, 253, 0.8)',
+              marginBottom: '20px',
               zIndex: 2,
             }}
           >
@@ -157,64 +189,81 @@ export default function Home({ darkMode }) {
               roundedCircle
               fluid
               style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                borderRadius: "50%",
-                border: "5px solid white",
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                borderRadius: '50%',
+                border: '5px solid white',
               }}
             />
           </motion.div>
 
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-            style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              width: orbitRadius * 2,
-              height: orbitRadius * 2,
-              margin: `-${orbitRadius}px 0 0 -${orbitRadius}px`,
-              borderRadius: "50%",
-            }}
-          >
-            {logos.map((logo, index) => {
-              const angle = (index / logos.length) * 2 * Math.PI;
-              const x = orbitRadius * Math.cos(angle);
-              const y = orbitRadius * Math.sin(angle);
+          {/* Orbiting logos only on large screens */}
+          <div className="d-none d-lg-block">
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
+              style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                width: orbitRadius * 2,
+                height: orbitRadius * 2,
+                margin: `-${orbitRadius}px 0 0 -${orbitRadius}px`,
+                borderRadius: '50%',
+              }}
+            >
+              {logos.map((logo, index) => {
+                const angle = (index / logos.length) * 2 * Math.PI;
+                const x = orbitRadius * Math.cos(angle);
+                const y = orbitRadius * Math.sin(angle);
+                return (
+                  <motion.div
+                    key={index}
+                    whileHover={{ scale: 1.4, rotate: 20 }}
+                    style={{
+                      position: 'absolute',
+                      top: orbitRadius + y,
+                      left: orbitRadius + x,
+                      width: '70px',
+                      height: '70px',
+                      margin: '-35px',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    <Image src={logo} alt="Skill" fluid />
+                  </motion.div>
+                );
+              })}
+            </motion.div>
+          </div>
 
-              return (
-                <motion.div
-                  key={index}
-                  whileHover={{ scale: 1.4, rotate: 20 }}
-                  style={{
-                    position: "absolute",
-                    top: orbitRadius + y,
-                    left: orbitRadius + x,
-                    width: "70px",
-                    height: "70px",
-                    margin: "-35px",
-                    cursor: "pointer",
-                  }}
-                >
-                  <Image src={logo} alt="Skill" fluid />
-                </motion.div>
-              );
-            })}
-          </motion.div>
+          {/* Grid logos on mobile/tablet */}
+          <div className="d-lg-none d-flex flex-wrap justify-content-center gap-3">
+            {logos.map((logo, index) => (
+              <div key={index} style={{ width: '60px', height: '60px' }}>
+                <Image src={logo} alt="Skill" fluid />
+              </div>
+            ))}
+          </div>
         </Col>
       </section>
 
       {/* About Me */}
-      <section className={`py-5 ${darkMode ? "bg-dark" : "bg-light"}`}>
+      <section className={`py-5 ${darkMode ? 'bg-dark' : 'bg-light'}`}>
         <Container>
           <h2 className={`text-center mb-4 ${textClass}`}>About Me</h2>
           <p className={`text-center w-75 mx-auto ${textClass}`}>
             I'm a passionate web developer, video editor, and designer who loves
-            building modern applications and creating engaging content.
-            My goal is to combine creativity with technology to make something
-            truly impactful. 🚀
+            building modern applications and creating engaging content. I have
+            hands-on experience in HTML, CSS, JavaScript, React.js, Laravel, C#,
+            and MongoDB/SQL Server, enabling me to work on both front-end and
+            back-end tasks. I have built responsive websites, interactive
+            interfaces, and database-driven applications that are functional,
+            visually appealing, and user-friendly. Motivated and adaptable, I
+            enjoy exploring new technologies and collaborating on projects that
+            challenge me and help me grow. My goal is to combine creativity with
+            technology to make something truly impactful. 🚀
           </p>
         </Container>
       </section>
@@ -236,7 +285,7 @@ export default function Home({ darkMode }) {
                 <ProgressBar
                   now={skill.level}
                   variant="primary"
-                  style={{ height: "10px", borderRadius: "5px" }}
+                  style={{ height: '10px', borderRadius: '5px' }}
                   animated
                 />
               </Col>
@@ -254,7 +303,7 @@ export default function Home({ darkMode }) {
                 <ProgressBar
                   now={skill.level}
                   variant="info"
-                  style={{ height: "10px", borderRadius: "5px" }}
+                  style={{ height: '10px', borderRadius: '5px' }}
                   animated
                 />
               </Col>
@@ -264,7 +313,10 @@ export default function Home({ darkMode }) {
       </section>
 
       {/* Projects */}
-      <section id="projects" className={`py-5 ${darkMode ? "bg-dark" : "bg-light"}`}>
+      <section
+        id="projects"
+        className={`py-5 ${darkMode ? 'bg-dark' : 'bg-light'}`}
+      >
         <Container>
           <h2 className={`text-center mb-4 ${textClass}`}>Projects</h2>
           <Row>
@@ -275,7 +327,11 @@ export default function Home({ darkMode }) {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
                 >
-                  <Card className={`shadow-lg h-100 ${darkMode ? "bg-secondary text-light" : ""}`}>
+                  <Card
+                    className={`shadow-lg h-100 ${
+                      darkMode ? 'bg-secondary text-light' : ''
+                    }`}
+                  >
                     <a
                       href={project.link}
                       target="_blank"
@@ -284,12 +340,16 @@ export default function Home({ darkMode }) {
                       <Card.Img
                         variant="top"
                         src={project.image}
-                        style={{ height: "200px", objectFit: "cover" }}
+                        style={{ height: '200px', objectFit: 'cover' }}
                       />
                     </a>
                     <Card.Body>
-                      <Card.Title className={textClass}>{project.title}</Card.Title>
-                      <Card.Text className={textClass}>{project.description}</Card.Text>
+                      <Card.Title className={textClass}>
+                        {project.title}
+                      </Card.Title>
+                      <Card.Text className={textClass}>
+                        {project.description}
+                      </Card.Text>
                       <a
                         href={project.link}
                         target="_blank"
@@ -313,7 +373,11 @@ export default function Home({ darkMode }) {
           <h2 className={`text-center mb-4 ${textClass}`}>Services</h2>
           <Row>
             <Col md={4} className="mb-4">
-              <Card className={`shadow-sm h-100 text-center p-3 ${darkMode ? "bg-secondary text-light" : ""}`}>
+              <Card
+                className={`shadow-sm h-100 text-center p-3 ${
+                  darkMode ? 'bg-secondary text-light' : ''
+                }`}
+              >
                 <h3>Web Development</h3>
                 <p>
                   Building responsive and modern websites with React, Laravel,
@@ -322,16 +386,24 @@ export default function Home({ darkMode }) {
               </Card>
             </Col>
             <Col md={4} className="mb-4">
-              <Card className={`shadow-sm h-100 text-center p-3 ${darkMode ? "bg-secondary text-light" : ""}`}>
+              <Card
+                className={`shadow-sm h-100 text-center p-3 ${
+                  darkMode ? 'bg-secondary text-light' : ''
+                }`}
+              >
                 <h3>UI/UX Design</h3>
                 <p>
-                  Creating beautiful and intuitive designs with Figma, Photoshop,
-                  and Canva.
+                  Creating beautiful and intuitive designs with Figma,
+                  Photoshop, and Canva.
                 </p>
               </Card>
             </Col>
             <Col md={4} className={`mb-4`}>
-              <Card className={`shadow-sm h-100 text-center p-3 ${darkMode ? "bg-secondary text-light" : ""}`}>
+              <Card
+                className={`shadow-sm h-100 text-center p-3 ${
+                  darkMode ? 'bg-secondary text-light' : ''
+                }`}
+              >
                 <h3>Video Editing</h3>
                 <p>
                   Producing creative video content with Premiere Pro and After
@@ -344,21 +416,22 @@ export default function Home({ darkMode }) {
       </section>
 
       {/* Contact */}
-      <section className={`py-5 ${darkMode ? "bg-dark" : "bg-light"}`}>
+      <section className={`py-5 ${darkMode ? 'bg-dark' : 'bg-light'}`}>
         <Container>
           <h2 className={`text-center mb-4 ${textClass}`}>Contact Me</h2>
           <p className={`text-center ${textClass}`}>
-            📧 Email:{" "}
-            <a href="mailto:your.email@example.com">your.email@example.com</a>
+            📧 Email: <a href="agnes270909@gmail.com">agnes270909@gmail.com</a>
           </p>
           <p className={`text-center ${textClass}`}>
-            🔗 Connect on{" "}
+            🔗 Connect on{' '}
             <a href="https://linkedin.com" target="_blank" rel="noreferrer">
               LinkedIn
-            </a>{" "}|{" "}
+            </a>{' '}
+            |{' '}
             <a href="https://github.com" target="_blank" rel="noreferrer">
               GitHub
-            </a>{" "}|{" "}
+            </a>{' '}
+            |{' '}
             <a href="https://facebook.com" target="_blank" rel="noreferrer">
               Facebook
             </a>
@@ -367,7 +440,11 @@ export default function Home({ darkMode }) {
       </section>
 
       {/* Footer */}
-      <footer className={`py-3 text-center ${darkMode ? "bg-dark text-light" : "bg-dark text-light"}`}>
+      <footer
+        className={`py-3 text-center ${
+          darkMode ? 'bg-dark text-light' : 'bg-dark text-light'
+        }`}
+      >
         <p>© 2025 KANHCHANA KONG. All rights reserved.</p>
       </footer>
     </>

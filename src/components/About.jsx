@@ -253,13 +253,13 @@ export default function About({ darkMode }) {
 
                   {/* Download CV */}
                   <motion.div whileHover={{ scale: 1.1 }} className="mt-4 text-center">
-                    <a
+                    {/* <a
                       href="/resume.pdf"
                       download
                       className="btn btn-primary px-4 py-2 rounded-3 shadow"
                     >
                       📄 Download CV
-                    </a>
+                    </a> */}
                   </motion.div>
 
                   {/* Fun Facts */}

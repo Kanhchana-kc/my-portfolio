@@ -24,3 +24,16 @@
 .text-primary {
   color: #3E5F44 !important;
 }
+.dark-placeholder::placeholder {
+  color: #ccc;  /* lighter placeholder for dark mode */
+  opacity: 1;   /* ensures visibility in some browsers */
+}
+.dark-placeholder::placeholder {
+  color: #8b949e; /* dark mode placeholder */
+  opacity: 1;
+}
+
+.light-placeholder::placeholder {
+  color: #6c757d; /* light mode placeholder */
+  opacity: 1;
+}

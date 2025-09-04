@@ -15,10 +15,18 @@ import imageHover from '../assets/pic2.gif'; // 🔹 hover image
 export default function Contact({ darkMode }) {
   const [hovered, setHovered] = useState(false);
 
-  const bgColor = darkMode ? '#121212' : '#f8f9fa';
-  const textColor = darkMode ? '#f8f9fa' : '#121212';
-  const inputBg = darkMode ? '#1c1c1e' : '#ffffff';
-  const inputBorder = darkMode ? '#444' : '#ced4da';
+  const bgColor = darkMode ? '#0d1117' : '#f8f9fa';
+  const textColor = darkMode ? '#e1e4e8' : '#121212';
+  const inputBg = darkMode ? '#161b22' : '#ffffff';
+  const inputTextColor = darkMode ? '#e1e4e8' : '#121212';
+  const inputBorder = darkMode ? '#30363d' : '#ced4da';
+  // const placeholderColor = darkMode ? "#8b949e" : "#6c757d";
+  // const buttonBg = darkMode ? "#238636" : "#0d6efd";
+  // const buttonText = "#ffffff";
+  // const socialBtnStyle = {
+  //   color: textColor,
+  //   borderColor: textColor,
+  // };
 
   return (
     <section
@@ -61,10 +69,13 @@ export default function Contact({ darkMode }) {
                     placeholder="Your Name"
                     style={{
                       backgroundColor: inputBg,
-                      color: textColor,
+                      color: inputTextColor,
                       border: `1px solid ${inputBorder}`,
                       borderRadius: '0.5rem',
                     }}
+                    className={
+                      darkMode ? 'dark-placeholder' : 'light-placeholder'
+                    }
                   />
                 </Form.Group>
                 <Form.Group className="mb-3">
@@ -106,7 +117,7 @@ export default function Contact({ darkMode }) {
                 <h5 className="fw-bold mb-3">I AM SOCIAL</h5>
                 <div className="d-flex justify-content-center flex-wrap gap-3">
                   <Button
-                    href="mailto:youremail@example.com"
+                    href="agnes270909@gmail.com"
                     target="_blank"
                     variant="outline-primary"
                     className="d-flex align-items-center gap-2 px-4 py-2 rounded-3"
@@ -122,14 +133,14 @@ export default function Contact({ darkMode }) {
                     <FaYoutube /> YouTube
                   </Button>
                   <Button
-                    href="tel:+855712727148"
+                    href="tel:+855712525148"
                     variant="outline-success"
                     className="d-flex align-items-center gap-2 px-4 py-2 rounded-3"
                   >
                     <FaPhone /> Call
                   </Button>
                   <Button
-                    href="https://www.linkedin.com/"
+                    href="https://www.linkedin.com/in/kong-kanhchana-872789359/"
                     target="_blank"
                     variant="info"
                     className="d-flex align-items-center gap-2 px-4 py-2 rounded-3"
@@ -137,7 +148,7 @@ export default function Contact({ darkMode }) {
                     <FaLinkedin /> LinkedIn
                   </Button>
                   <Button
-                    href="https://facebook.com"
+                    href="https://www.facebook.com/kanh.chana.71066/"
                     target="_blank"
                     variant="outline-primary"
                     className="d-flex align-items-center gap-2 px-4 py-2 rounded-3"
@@ -145,7 +156,7 @@ export default function Contact({ darkMode }) {
                     <FaFacebook /> Facebook
                   </Button>
                   <Button
-                    href="https://github.com/YOUR_GITHUB_USERNAME"
+                    href="https://github.com/Kanhchana-kc"
                     target="_blank"
                     variant="outline-dark"
                     className="d-flex align-items-center gap-2 px-4 py-2 rounded-3"
